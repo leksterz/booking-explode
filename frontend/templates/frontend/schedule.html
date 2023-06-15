@@ -1,0 +1,27 @@
+{% extends "frontend/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% if status %}
+    <div class="alert alert-success">
+      {{ status }}
+    </div>
+  {% endif %}
+{% if object_list %}
+    {% if request.resolver_match.url_name == 'schedule' %}
+        {% if request.resolver_match.kwargs.offset > 0 %}
+            <a href="{% url 'frontend:schedule' request.resolver_match.kwargs.offset|add:'-1' %}">Previous Day</a>
+        {% endif %}
+        <a href="{% url 'frontend:schedule' request.resolver_match.kwargs.offset|add:'1' %}">Next Day</a>
+    {% endif %}
+    <br>
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit">Submit Request</button>
+    </form>
+{% else %}
+    <p>No schedule available.</p>
+{% endif %}
+
+{% endblock content %}

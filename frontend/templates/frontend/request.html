@@ -1,0 +1,21 @@
+{% extends 'frontend/base.html' %}
+
+{% block content %}
+  {% if status %}
+    <div class="alert alert-success">
+      {{ status }}
+    </div>
+  {% endif %}
+  <h1>Request Time Slot</h1>
+  {% if prev_url %}
+  <a href="{{ prev_url }}">Previous Day</a>
+  {% endif %}
+  {% if next_url %}
+    <a href="{{ next_url }}">Next Day</a>
+  {% endif %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}

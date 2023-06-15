@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Make an Appointment</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <div class="form-group">
+      <label for="{{ form.schedule.id_for_label }}">Select a date</label>
+      <select class="form-control" name="{{ form.schedule.name }}" id="{{ form.schedule.id_for_label }}">
+        {% for date in available_dates %}
+          <option value="" disabled>{{ date|date:"F d, Y" }}</option>
+          {% for schedule in available_schedules %}
+            {% if schedule.date == date %}
+              <option value="{{ schedule.id }}">{{ schedule.date|date:"F d, Y" }} at {{ schedule.start_time|time:"h:i A" }}</option>
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}
