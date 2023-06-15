@@ -2,12 +2,12 @@
 EXPLODE BOOKING 
 Documentation
 
-**Background**
+**Background:**
 Explode Booking is a Django web application designed to simplify and automate the booking process for music recording studios. The application allows artists to view studio availability, book sessions with engineers, and receive notifications about their booking status. Studio owners and engineers can manage bookings and approve or reject requests.
 
 The following documentation captures the building blocks of the project from a technical capability perspective. The language is aimed to be consumed by programmers and non-programmers alike.
 
-**Data and models**
+**Data and models:**
 In a Django application, models are like folders in a big cabinet that help you organize everything about your recording studio. Each folder (model) has a label that tells you what type of information belongs inside (like recording engineers, artists, or bookings). We use models to store and organize different pieces of information about the recording studio. Just like with folders, these models help us find what we're looking for more easily and keep everything in order.
 
 Now, sometimes one folder needs to know what's inside another folder. For example, a booking might be related to a specific artist and a specific engineer. So we connect the booking folder to the artist folder and the engineer folder to show that they go together. By connecting these folders (models), we can easily find out which engineer an artist is working with or which artists an engineer has helped. These connections between folders (models) make our Django app even more organized and help us find the information we need quickly and easily.
